@@ -1,41 +1,34 @@
 const checkAttendance = () => {
   const employeeAttendance = Math.random();
-  console.log(employeeAttendance);
-
   return employeeAttendance > 0.5 ? true : false;
 };
 
-const calculateDailyWage = () => {
-  const workType = Math.floor(Math.random() * 4);
-
-  let hourWorked;
-  const salaryPerHour = 20;
-
+const getWorkHours = () => {
+  let workType = Math.floor(Math.random() * 3) + 2;
+  const attandance = checkAttendance();
+  if(attandance === false){
+    workType = 1;
+  }
   switch (workType) {
     case 1:
-      hourWorked = 0;
-      console.log("No Time");
-      break;
-
+      return 0;
     case 2:
-      hourWorked = 4;
-      console.log("Part Time");
-      break;
+      return 4;
     case 3:
-      hourWorked = 8;
-      console.log("Full Time");
-      break;
-
+      return 8;
     default:
-      hourWorked = 0;
-      console.log("No Time");
-      break;
+      return 0;
   }
-
-  return hourWorked * salaryPerHour;
 };
 
-
+const calculateDailyWage = () => {
+  const hourWorked = getWorkHours();
+  const salaryPerHour = 20;
+  return {
+    hour: hourWorked,
+    salary: salaryPerHour * hourWorked,
+  };
+};
 
 //[=============]Debuger[=============]
 
@@ -47,8 +40,7 @@ const calculateDailyWage = () => {
 //     console.log(`Employee1 is Absent`);
 //   }
 
-
-//   const emp1 = calculateDailyWage();
-//   console.log(`Employee1 Earned ${emp1}$`);
+// const emp1 = calculateDailyWage();
+// console.log(`Employee1 worked ${emp1.hour}hrs Earned ${emp1.salary}$`);
 
 //[=============]Debuger[=============]
