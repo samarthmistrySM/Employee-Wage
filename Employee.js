@@ -6,9 +6,9 @@ const checkAttendance = () => {
 const getWorkHours = () => {
   let workType = Math.floor(Math.random() * 3) + 2;
   const attandance = checkAttendance();
-  if(attandance === false){
-    workType = 1;
-  }
+  
+  workType = !attandance && 1;
+
   switch (workType) {
     case 1:
       return 0;
@@ -26,8 +26,29 @@ const calculateDailyWage = () => {
   const salaryPerHour = 20;
   return {
     hour: hourWorked,
-    salary: salaryPerHour * hourWorked,
+    salaryPerDay: salaryPerHour * hourWorked,
   };
+};
+
+const calculateForMonth = () => {
+  let days = 0;
+  let totalHours = 0;
+  let salary = 0;
+
+  for (let i = 0; i < 20; i++) {
+    const emp = calculateDailyWage();
+    if (emp.hour !== 0) {
+      days++;
+      totalHours += emp.hour;
+      salary += emp.salaryPerDay;
+    }
+  }
+
+  console.log("====================================");
+  console.log(
+    `Employee worked ${days} days, ${totalHours} hours a in month and earned ${salary}$`
+  );
+  console.log("====================================");
 };
 
 //[=============]Debuger[=============]
@@ -42,5 +63,7 @@ const calculateDailyWage = () => {
 
 // const emp1 = calculateDailyWage();
 // console.log(`Employee1 worked ${emp1.hour}hrs Earned ${emp1.salary}$`);
+
+// calculateForMonth()
 
 //[=============]Debuger[=============]

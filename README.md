@@ -14,3 +14,15 @@ The `calculateDailyWage` function uses the `Math.random()` function to generate 
 ### Date - 04-12-2024
 
 The code has been refactored to simplify attendance and wage calculation. The `checkAttendance` function determines if the employee is present based on a random value. The `getWorkHours` function generates random work hours: 0 for absent, 4 for Part-Time, and 8 for Full-Time. The `calculateDailyWage` function calculates the salary based on hours worked at a rate of $20 per hour.
+
+## Use Case 4 - Employee Wages for a month 
+### Date - 04-12-2024
+
+The `calculateForMonth` function calculates the total salary and hours worked by an employee over 20 workdays in a month. It calls the `calculateDailyWage` function to get the daily hours worked and salary, and then aggregates the data. It tracks the total number of days worked, total hours, and total salary. At the end, it prints the results in a formatted message:
+##### Message:
+```markdown
+
+===========================================================
+Employee worked 5 days, 36 hours a in month and earned 720$
+===========================================================
+```
