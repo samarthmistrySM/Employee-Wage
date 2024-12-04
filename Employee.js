@@ -51,7 +51,32 @@ const calculateForMonth = () => {
   console.log("====================================");
 };
 
-calculateForMonth()
+const calculateMaxWage = () => {
+  let days = 0;
+  let totalHours = 0;
+  let salary = 0;
+
+  while (days < 20 && totalHours < 160) {
+    const emp = calculateDailyWage();
+    if(totalHours+emp.hour <= 160){
+      if (emp.hour !== 0) {
+        days++;
+        totalHours += emp.hour;
+        salary += emp.salaryPerDay;
+      }
+    }else{
+      break;
+    }
+  }
+
+  console.log("====================================");
+  console.log(
+    `Employee worked ${days} days, ${totalHours} hours a in month and earned ${salary}$`
+  );
+  console.log("====================================");
+};
+
+calculateMaxWage();
 
 //[=============]Debuger[=============]
 
