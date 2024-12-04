@@ -7,7 +7,7 @@ const getWorkHours = () => {
   let workType = Math.floor(Math.random() * 3) + 2;
   const attandance = checkAttendance();
   
-  workType = !attandance && 1;
+  workType = !attandance ? 1 : workType;
 
   switch (workType) {
     case 1:
@@ -50,6 +50,8 @@ const calculateForMonth = () => {
   );
   console.log("====================================");
 };
+
+calculateForMonth()
 
 //[=============]Debuger[=============]
 
