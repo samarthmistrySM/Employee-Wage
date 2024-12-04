@@ -76,7 +76,6 @@ const calculateMaxWage = () => {
   console.log("====================================");
 };
 
-calculateMaxWage();
 
 //[=============]Debuger[=============]
 
