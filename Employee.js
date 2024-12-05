@@ -1,12 +1,13 @@
 const checkAttendance = () => {
   const employeeAttendance = Math.random();
-  return employeeAttendance > 0.5 ? true : false;
+  return employeeAttendance > 0.3 ? true : false;
 };
 
 const getWorkHours = () => {
   let workType = Math.floor(Math.random() * 3) + 2;
+
   const attandance = checkAttendance();
-  
+
   workType = !attandance ? 1 : workType;
 
   switch (workType) {
@@ -30,7 +31,7 @@ const calculateDailyWage = () => {
   };
 };
 
-const calculateForMonth = () => {
+const calculateForMonth = (month) => {
   let days = 0;
   let totalHours = 0;
   let salary = 0;
@@ -44,11 +45,7 @@ const calculateForMonth = () => {
     }
   }
 
-  console.log("====================================");
-  console.log(
-    `Employee worked ${days} days, ${totalHours} hours a in month and earned ${salary}$`
-  );
-  console.log("====================================");
+  return { month, daysWorked: days, totalHours, salary };
 };
 
 const calculateMaxWage = () => {
@@ -58,13 +55,13 @@ const calculateMaxWage = () => {
 
   while (days < 20 && totalHours < 160) {
     const emp = calculateDailyWage();
-    if(totalHours+emp.hour <= 160){
+    if (totalHours + emp.hour <= 160) {
       if (emp.hour !== 0) {
         days++;
         totalHours += emp.hour;
         salary += emp.salaryPerDay;
       }
-    }else{
+    } else {
       break;
     }
   }
@@ -76,6 +73,14 @@ const calculateMaxWage = () => {
   console.log("====================================");
 };
 
+const calculateForYear = () => {
+  const employeeData = [];
+  for (let i = 1; i <= 12; i++) {
+    const empDataPerMonth = calculateForMonth(i);
+    employeeData.push(empDataPerMonth);
+  }
+  return employeeData;
+};
 
 //[=============]Debuger[=============]
 

@@ -19,6 +19,7 @@ The code has been refactored to simplify attendance and wage calculation. The `c
 ### Date - 04-12-2024
 
 The `calculateForMonth` function calculates the total salary and hours worked by an employee over 20 workdays in a month. It calls the `calculateDailyWage` function to get the daily hours worked and salary, and then aggregates the data. It tracks the total number of days worked, total hours, and total salary. At the end, it prints the results in a formatted message:
+
 ##### Message:
 ```markdown
 ===========================================================
@@ -42,3 +43,11 @@ The `calculateMaxWage` function calculates the total salary and hours worked by 
 Employee worked 24 days, 160 hours a in month and earned 3200$
 ==============================================================
 ```
+
+## Use Case 6 - Employee Wages for a Year
+### Date - 05-12-2024
+The `calculateForYear` Function calculates and store the total salary, worked hours and how many days the Employee worked for month by month.
+
+### Key Differences from the Original Function:
+- firstly function `calculateForMonth` Calulates total salary based on daily wages returned by the `calculateDailyWage()` function.
+- The total salary is calculated based on Monthy wages returned by the `calculateForMonth()` function.
