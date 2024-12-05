@@ -1,3 +1,5 @@
+const prompt = require("prompt-sync")();
+
 const checkAttendance = () => {
   const employeeAttendance = Math.random();
   return employeeAttendance > 0.3 ? true : false;
@@ -65,36 +67,84 @@ const calculateMaxWage = () => {
       break;
     }
   }
+  return {days,totalHours,salary}
+};
 
-  console.log("====================================");
-  console.log(
-    `Employee worked ${days} days, ${totalHours} hours a in month and earned ${salary}$`
-  );
-  console.log("====================================");
+const numberToMonth = (num) => {
+  switch (num) {
+    case 1:
+      return "Jan";
+    case 2:
+      return "Fab";
+    case 3:
+      return "Mar";
+    case 4:
+      return "Apr";
+    case 5:
+      return "May";
+    case 6:
+      return "Jun";
+    case 7:
+      return "Jul";
+    case 8:
+      return "Aug";
+    case 9:
+      return "Sep";
+    case 10:
+      return "Oct";
+    case 11:
+      return "Nov";
+    case 12:
+      return "Dec";
+    default:
+      return "Invalid";
+  }
 };
 
 const calculateForYear = () => {
   const employeeData = [];
   for (let i = 1; i <= 12; i++) {
-    const empDataPerMonth = calculateForMonth(i);
+    const month = numberToMonth(i);
+    const empDataPerMonth = calculateForMonth(month);
     employeeData.push(empDataPerMonth);
   }
   return employeeData;
 };
+
+const calculateForUsers = () => {
+  const usersData = new Map();
+  const input = parseInt(prompt("Enter the number of Employees: "));
+  for (let i = 0; i < input; i++) {
+    const name = prompt("Enter the name of user: ");
+    const userData = calculateForYear();
+    usersData.set(name,userData)
+  }
+  return usersData;
+};
+
+
+
 
 //[=============]Debuger[=============]
 
 //   const emp1 = checkAttendance();
 
 //   if (emp1) {
-//     console.log(`Employee1 is present`);
-//   } else {
-//     console.log(`Employee1 is Absent`);
-//   }
+  //     console.log(`Employee1 is present`);
+  //   } else {
+    //     console.log(`Employee1 is Absent`);
+    //   }
+    
+    // const emp1 = calculateDailyWage();
+    // console.log(`Employee1 worked ${emp1.hour}hrs Earned ${emp1.salary}$`);
+    
+    // calculateForMonth()
+    // console.log(calculateForUsers());
 
-// const emp1 = calculateDailyWage();
-// console.log(`Employee1 worked ${emp1.hour}hrs Earned ${emp1.salary}$`);
+    // const usersData = calculateForUsers();
 
-// calculateForMonth()
+    // for (let [key, value] of usersData) {
+    //   console.log(key, value);
+    // }
 
 //[=============]Debuger[=============]
