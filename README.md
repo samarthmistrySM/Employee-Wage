@@ -51,3 +51,10 @@ The `calculateForYear` Function calculates and store the total salary, worked ho
 ### Key Differences from the Original Function:
 - firstly function `calculateForMonth` Calulates total salary based on daily wages returned by the `calculateDailyWage()` function.
 - The total salary is calculated based on Monthy wages returned by the `calculateForMonth()` function.
+
+## Use Case 6 - Employee Wages for a Year
+### Date - 05-12-2024
+The `calculateForUsers` Function calculates and store the total salary, worked hours and how many days the Employee worked for month by month as a User's Name using map.
+
+### Key Differences from the Original Function:
+- By using Calculat users data by using `calculateForYear` function and storing it using map as key value pain and the key is going to be a name of User whose data is going to be stored as a value
