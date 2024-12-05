@@ -122,8 +122,20 @@ const calculateForUsers = () => {
   return usersData;
 };
 
+const findMonthUserData = () => {
+  const usersData = calculateForUsers();
 
+  const username = prompt("Enter the username: ");
+  const month = prompt("Enter Month (Jan, Feb, ...): ")
 
+  const userData = usersData.get(username);
+
+  const monthData = userData.filter((data)=>{
+    return (data.month === month);
+  })
+
+  return monthData;
+}
 
 //[=============]Debuger[=============]
 
@@ -140,11 +152,12 @@ const calculateForUsers = () => {
     
     // calculateForMonth()
     // console.log(calculateForUsers());
-
+    
     // const usersData = calculateForUsers();
-
+    
     // for (let [key, value] of usersData) {
-    //   console.log(key, value);
-    // }
-
+      //   console.log(key, value);
+      // }
+      
+    // console.table(findMonthUserData());
 //[=============]Debuger[=============]
