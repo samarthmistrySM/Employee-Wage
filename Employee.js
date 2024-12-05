@@ -67,38 +67,25 @@ const calculateMaxWage = () => {
       break;
     }
   }
-  return {days,totalHours,salary}
+  return { days, totalHours, salary };
 };
 
 const numberToMonth = (num) => {
-  switch (num) {
-    case 1:
-      return "Jan";
-    case 2:
-      return "Fab";
-    case 3:
-      return "Mar";
-    case 4:
-      return "Apr";
-    case 5:
-      return "May";
-    case 6:
-      return "Jun";
-    case 7:
-      return "Jul";
-    case 8:
-      return "Aug";
-    case 9:
-      return "Sep";
-    case 10:
-      return "Oct";
-    case 11:
-      return "Nov";
-    case 12:
-      return "Dec";
-    default:
-      return "Invalid";
-  }
+  const months = [
+    "Jan",
+    "Fab",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return months[num - 1];
 };
 
 const calculateForYear = () => {
@@ -117,7 +104,11 @@ const calculateForUsers = () => {
   for (let i = 0; i < input; i++) {
     const name = prompt("Enter the name of user: ");
     const userData = calculateForYear();
-    usersData.set(name,userData)
+
+    if (!usersData.has(name)) {
+      usersData.set(name, []);
+    }
+    usersData.get(name).push(userData);
   }
   return usersData;
 };
@@ -126,38 +117,52 @@ const findMonthUserData = () => {
   const usersData = calculateForUsers();
 
   const username = prompt("Enter the username: ");
-  const month = prompt("Enter Month (Jan, Feb, ...): ")
+  const month = prompt("Enter Month (Jan, Feb, ...): ");
 
   const userData = usersData.get(username);
+  let monthData;
+  if (userData.length === 1) {
+    monthData = userData[0].filter((data) => {
+      return data.month === month;
+    });
+  } else {
+    console.log("====================================");
+    for (let i = 0; i < userData.length; i++) {
+      console.log(`${i}. ${username}`);
+    }
+    console.log("====================================");
+    
+    const input = parseInt(prompt("Select User: "));
 
-  const monthData = userData.filter((data)=>{
-    return (data.month === month);
-  })
+    monthData = userData[input].filter((data) => {
+      return data.month === month;
+    });
+  }
 
   return monthData;
-}
+};
 
 //[=============]Debuger[=============]
 
 //   const emp1 = checkAttendance();
 
 //   if (emp1) {
-  //     console.log(`Employee1 is present`);
-  //   } else {
-    //     console.log(`Employee1 is Absent`);
-    //   }
-    
-    // const emp1 = calculateDailyWage();
-    // console.log(`Employee1 worked ${emp1.hour}hrs Earned ${emp1.salary}$`);
-    
-    // calculateForMonth()
-    // console.log(calculateForUsers());
-    
-    // const usersData = calculateForUsers();
-    
-    // for (let [key, value] of usersData) {
-      //   console.log(key, value);
-      // }
-      
-    // console.table(findMonthUserData());
+//     console.log(`Employee1 is present`);
+//   } else {
+//     console.log(`Employee1 is Absent`);
+//   }
+
+// const emp1 = calculateDailyWage();
+// console.log(`Employee1 worked ${emp1.hour}hrs Earned ${emp1.salary}$`);
+
+// calculateForMonth()
+// console.log(calculateForUsers());
+
+// const usersData = calculateForUsers();
+
+// for (let [key, value] of usersData) {
+//     console.log(key, value.length);
+//   }
+
+console.table(findMonthUserData());
 //[=============]Debuger[=============]

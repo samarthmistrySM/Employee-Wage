@@ -61,4 +61,13 @@ The `calculateForUsers` Function calculates and store the total salary, worked h
 
 ## Use Case 8 - Get data Of a Month
 ### Date - 05-12-2024
-The `findMonthUserData` functions first calculate the multiple users data using `calculateForUsers` function and fetch the users data according user input and for that the function is using `Map().get()` method and `Array.filter()` method and returns it.
+The `findMonthUserData` functions first calculate the multiple users data using `calculateForUsers` function and fetch the users data according user input and for that the function is using `Map().get()` and `Array.filter()` method and returns the Month according to input.
+
+## Use Case 9 - Get data Of a Month (Solution For Duplicate Name)
+### Date - 05-12-2024
+The `findMonthUserData` functions first calculate the multiple users data using `calculateForUsers` function and fetch the users data according user input and for that the function is using `Map().get()` and `Array.filter()` method and returns the Month according to input.
+
+##### Changes
+- Whenever the same user exits we use `Map` to the same name as a key and in the value of that key we use array for multiple user with same username
+- if the username holding only one user than simply returns it.
+- else user have to chose which one is the correct.
